@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>MMOServer</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Usando .NET 8 LTS -->
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <!-- Usando Microsoft.Extensions.Configuration para configuração (já estava) -->
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+    <!-- Usando System.Text.Json (nativo do .NET) para serialização/deserialização -->
+    <!-- Mantendo Newtonsoft.Json por compatibilidade com WebSocketSharp e JObject, mas idealmente migrar para System.Text.Json -->
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <!-- Migrando para MySql.Data.EntityFrameworkCore para melhor integração com .NET Core -->
+    <PackageReference Include="MySql.Data" Version="8.4.0" />
+    <!-- WebSocketSharp é antigo, mas mantido por ser o que o código usa. O ideal seria usar System.Net.WebSockets ou ASP.NET Core SignalR -->
+    <PackageReference Include="WebSocketSharp-netstandard" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\classes.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\items.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\loot_tables.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\monsters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\skills.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\spawn_areas.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\terrain_heightmap.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
